@@ -2,7 +2,6 @@ import React, { useContext, useEffect, useState } from 'react'
 import Title from '../component/Title'
 import { shopDataContext } from '../context/ShopContext'
 import { useNavigate } from 'react-router-dom'
-import product from '../../../backend/models/productModel'
 import { RiDeleteBin6Line } from "react-icons/ri";
 import CartTotal from '../component/CartTotal'
 

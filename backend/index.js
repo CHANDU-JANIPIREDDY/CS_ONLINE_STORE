@@ -19,9 +19,23 @@ let port = process.env.PORT || 6000;
 let app = express();
 
 
+const allowedOrigins = [
+    "https://cs-online-store-frontend.onrender.com",
+    "https://cs-online-store-admin.onrender.com",
+    "http://localhost:5173", // frontend (Vite dev)
+    "http://localhost:5174", // admin (Vite dev)
+    "http://localhost:3000",
+];
+
 app.use(cookieParser());
 app.use(cors({
-    origin: ["https://cs-online-store-frontend.onrender.com","https://cs-online-store-admin.onrender.com"],
+    origin: function (origin, callback) {
+        // allow requests with no origin (e.g. mobile apps, curl, same-origin)
+        if (!origin || allowedOrigins.includes(origin)) {
+            return callback(null, true);
+        }
+        return callback(new Error("Not allowed by CORS: " + origin));
+    },
     credentials: true,
     methods: "GET,HEAD,PUT,PATCH,POST,DELETE"
 }))
