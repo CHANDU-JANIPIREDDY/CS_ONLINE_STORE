@@ -22,7 +22,7 @@ let app = express();
 const allowedOrigins = [
     "https://cs-online-store-frontend.onrender.com",
     "https://cs-online-store-admin.onrender.com",
-    "https://cs-admin-store.onrender.com/", // deployed admin dashboard
+    "https://cs-admin-store.onrender.com", // deployed admin dashboard (no trailing slash)
     "http://localhost:5173", // frontend (Vite dev)
     "http://localhost:5174", // admin (Vite dev)
     "http://localhost:3000",
@@ -40,8 +40,7 @@ const corsOptions = {
     credentials: true,
     methods: "GET,HEAD,PUT,PATCH,POST,DELETE"
 };
-app.use(cors(corsOptions));
-app.options("*", cors(corsOptions)); // handle CORS preflight (OPTIONS) requests
+app.use(cors(corsOptions)); // also handles preflight (OPTIONS) requests automatically
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
