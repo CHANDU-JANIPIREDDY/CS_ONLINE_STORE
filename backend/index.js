@@ -22,13 +22,14 @@ let app = express();
 const allowedOrigins = [
     "https://cs-online-store-frontend.onrender.com",
     "https://cs-online-store-admin.onrender.com",
+    "https://cs-admin-pannel.onrender.com", // deployed admin dashboard
     "http://localhost:5173", // frontend (Vite dev)
     "http://localhost:5174", // admin (Vite dev)
     "http://localhost:3000",
 ];
 
 app.use(cookieParser());
-app.use(cors({
+const corsOptions = {
     origin: function (origin, callback) {
         // allow requests with no origin (e.g. mobile apps, curl, same-origin)
         if (!origin || allowedOrigins.includes(origin)) {
@@ -38,7 +39,9 @@ app.use(cors({
     },
     credentials: true,
     methods: "GET,HEAD,PUT,PATCH,POST,DELETE"
-}))
+};
+app.use(cors(corsOptions));
+app.options("*", cors(corsOptions)); // handle CORS preflight (OPTIONS) requests
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
