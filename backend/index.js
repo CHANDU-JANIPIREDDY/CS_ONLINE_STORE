@@ -22,7 +22,7 @@ let app = express();
 const allowedOrigins = [
     "https://cs-online-store-frontend.onrender.com",
     "https://cs-online-store-admin.onrender.com",
-    "https://cs-admin-pannel.onrender.com", // deployed admin dashboard
+    "https://cs-admin-store.onrender.com/", // deployed admin dashboard
     "http://localhost:5173", // frontend (Vite dev)
     "http://localhost:5174", // admin (Vite dev)
     "http://localhost:3000",
