@@ -1,20 +1,36 @@
 import React from 'react'
-import { FaCircle } from "react-icons/fa6";
+import { useNavigate } from 'react-router-dom'
 
+const slides = [0, 1, 2, 3]
 
-const Hero = ({heroData,heroCount,setHeroCount}) => {
+const Hero = ({ heroData, heroCount, setHeroCount }) => {
+  const navigate = useNavigate()
+
   return (
-    <div className='relative z-10 h-full flex flex-col justify-center px-5 sm:px-10 lg:px-16 max-w-3xl'>
-        <div className='text-[#88d9ee] text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-semibold leading-tight'>
-            <p>{heroData.text1}</p>
-            <p className='mt-2 text-white/90 text-xl sm:text-2xl md:text-3xl lg:text-4xl font-medium'>{heroData.text2}</p>
-        </div>
-        <div className='mt-8 flex items-center gap-3'>
-        <FaCircle className={`w-3.5 h-3.5 cursor-pointer ${heroCount===0? "fill-orange-400": "fill-white"}`} onClick={()=>setHeroCount(0)} />
-        <FaCircle className={`w-3.5 h-3.5 cursor-pointer ${heroCount===1? "fill-orange-400": "fill-white"}`} onClick={()=>setHeroCount(1)}/>
-        <FaCircle className={`w-3.5 h-3.5 cursor-pointer ${heroCount===2? "fill-orange-400": "fill-white"}`} onClick={()=>setHeroCount(2)}/>
-        <FaCircle className={`w-3.5 h-3.5 cursor-pointer ${heroCount===3? "fill-orange-400": "fill-white"}`} onClick={()=>setHeroCount(3)}/>
-        </div>
+    <div className='w-full max-w-xl'>
+      <p className='text-[11px] uppercase tracking-[0.32em] text-[#d8fcff] sm:text-xs'>CS Store</p>
+      <h1 className='mt-3 font-[Outfit,sans-serif] text-[32px] font-medium leading-[1.12] text-white sm:text-5xl lg:text-6xl'>
+        {heroData.text1}
+      </h1>
+      <p className='mt-3 max-w-md text-sm text-white/85 sm:text-lg'>{heroData.text2}</p>
+      <button
+        type='button'
+        onClick={() => navigate('/collection')}
+        className='mt-6 h-11 cursor-pointer bg-white px-6 text-sm font-semibold tracking-wide text-[#0c2025] transition hover:bg-[#d8fcff]'
+      >
+        Shop Collection
+      </button>
+      <div className='mt-8 flex items-center gap-2'>
+        {slides.map((index) => (
+          <button
+            key={index}
+            type='button'
+            aria-label={`Show slide ${index + 1}`}
+            onClick={() => setHeroCount(index)}
+            className={`h-[3px] cursor-pointer transition-all ${heroCount === index ? 'w-10 bg-white' : 'w-5 bg-white/40'}`}
+          />
+        ))}
+      </div>
     </div>
   )
 }

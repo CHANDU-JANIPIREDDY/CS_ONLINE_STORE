@@ -63,59 +63,39 @@ const Login = () => {
   };
 
   return (
-    <div className='w-full min-h-screen bg-gradient-to-l from-[#141414] to-[#0c2025] text-white flex flex-col items-center justify-start py-6 px-4'>
-      <div className='w-full h-[70px] flex items-center justify-start px-5 sm:px-[30px] gap-[10px] cursor-pointer' onClick={() => navigate('/')}>
-        <img src="https://upload.wikimedia.org/wikipedia/commons/4/42/Counter-Strike_CS_logo.svg" alt="CS Store" className='h-12 sm:h-14 w-auto object-contain' />
+    <div className='relative min-h-screen overflow-hidden bg-[#07161b] px-4 py-6 text-white'>
+      <div className='pointer-events-none absolute -left-16 top-8 h-64 w-64 rounded-full bg-[#14a8ba]/45 blur-3xl' />
+      <div className='pointer-events-none absolute right-0 top-24 h-72 w-72 rounded-full bg-[#3d74ff]/35 blur-3xl' />
+      <div className='pointer-events-none absolute bottom-0 left-1/3 h-64 w-64 rounded-full bg-[#8ee9f2]/25 blur-3xl' />
+
+      <div className='relative z-10 mx-auto flex w-full max-w-md cursor-pointer items-center' onClick={() => navigate('/')}>
+        <img src="https://upload.wikimedia.org/wikipedia/commons/4/42/Counter-Strike_CS_logo.svg" alt="CS Store" className='h-12 w-auto object-contain' />
       </div>
 
-      <div className='w-full flex flex-col items-center justify-center gap-2 text-center px-4 mb-6'>
-        <span className='text-[20px] sm:text-[24px] lg:text-[28px] font-semibold'>LOGIN PAGE</span>
-        <span className='text-[13px] sm:text-[16px] lg:text-[18px]'>WELCOME TO <span className='text-red-500 font-semibold'>CS STORE</span>, PLACE YOUR ORDER</span>
-      </div>
-
-      <div className='max-w-[600px] w-[90%] bg-[#00000025] border border-[#96969635] backdrop-blur-[2px] rounded-lg shadow-lg flex items-center justify-center p-5 sm:p-8'>
-        <form onSubmit={handleLogin} className='w-full flex flex-col items-center justify-start gap-5'>
-          <div className='w-full h-[50px] bg-[#42656cae] rounded-lg flex items-center justify-center gap-[10px] cursor-pointer text-sm sm:text-base' onClick={googleLogin}>
-            <img src="https://static.vecteezy.com/system/resources/previews/022/613/027/non_2x/google-icon-logo-symbol-free-png.png" alt="" className='w-[20px]'/>
+      <div className='glass-water relative z-10 mx-auto mt-6 w-full max-w-md rounded-[28px]'>
+        <form onSubmit={handleLogin} className='relative z-10 flex flex-col gap-4 p-5 sm:p-7'>
+          <div className='text-center'>
+            <p className='text-xs uppercase tracking-[0.22em] text-[#d8fcff]/80'>Welcome to CS Store</p>
+            <h1 className='mt-1 text-2xl font-semibold'>Login</h1>
+          </div>
+          <button type='button' className='flex h-12 w-full items-center justify-center gap-2 rounded-2xl border border-white/30 bg-white/15 text-sm cursor-pointer hover:bg-white/25' onClick={googleLogin}>
+            <img src="https://static.vecteezy.com/system/resources/previews/022/613/027/non_2x/google-icon-logo-symbol-free-png.png" alt="" className='w-5'/>
             Login with Google
+          </button>
+          <div className='flex items-center gap-3 text-xs tracking-[0.16em] text-white/70'>
+            <div className='h-px flex-1 bg-white/25'></div> OR <div className='h-px flex-1 bg-white/25'></div>
           </div>
-
-          <div className='w-full flex items-center justify-center gap-[10px]'>
-            <div className='flex-1 h-[1px] bg-[#96969635]'></div> OR <div className='flex-1 h-[1px] bg-[#96969635]'></div>
+          <input type="email" className='glass-field' placeholder='Email' required value={email} onChange={(e) => setEmail(e.target.value)} />
+          <div className="relative w-full">
+            <input type={show ? "text" : "password"} className='glass-field pr-11' placeholder='Password' required value={password} onChange={(e) => setPassword(e.target.value)} />
+            {!show && <MdOutlineRemoveRedEye className='absolute right-4 top-1/2 -translate-y-1/2 cursor-pointer text-white' onClick={() => setShow(prev => !prev)} />}
+            {show && <IoMdEye className='absolute right-4 top-1/2 -translate-y-1/2 cursor-pointer text-white' onClick={() => setShow(prev => !prev)} />}
           </div>
-
-          <div className='w-full flex flex-col items-center justify-center gap-4'>
-            <input
-              type="email"
-              className='w-full h-[50px] border-2 border-[#95969635] rounded-lg bg-transparent placeholder-[#ffffffc7] px-[20px] font-semibold focus:outline-none focus:border-[#6060f5]'
-              placeholder='Email'
-              required
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-            />
-
-            <div className="relative w-full">
-              <input
-                type={show ? "text" : "password"}
-                className='w-full h-[50px] border-2 border-[#95969635] rounded-lg bg-transparent placeholder-[#ffffffc7] px-[20px] font-semibold pr-[40px] focus:outline-none focus:border-[#6060f5]'
-                placeholder='Password'
-                required
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-              />
-              {!show && <MdOutlineRemoveRedEye className='absolute right-4 top-1/2 -translate-y-1/2 cursor-pointer text-white' onClick={() => setShow(prev => !prev)} />}
-              {show && <IoMdEye className='absolute right-4 top-1/2 -translate-y-1/2 cursor-pointer text-white' onClick={() => setShow(prev => !prev)} />}
-            </div>
-
-            <button className='w-full h-[50px] bg-[#6060f5] hover:bg-[#4f4fe0] transition-colors rounded-lg text-[17px] font-semibold'>Login</button>
-
-            <p className='flex justify-center gap-[10px] text-sm sm:text-base'>
-              You have no account?
-              <span className='text-[#5555f6cf] font-semibold cursor-pointer' onClick={() => navigate('/signup')}>
-                Create New Account
-              </span>
-            </p>
-          </div>
+          <button className='h-12 w-full cursor-pointer rounded-2xl bg-gradient-to-r from-[#7de7f2] to-[#5aa7ff] text-base font-semibold text-[#072026]'>Login</button>
+          <p className='text-center text-sm text-white/85'>
+            You have no account?{' '}
+            <span className='cursor-pointer font-semibold text-white' onClick={() => navigate('/signup')}>Create New Account</span>
+          </p>
         </form>
       </div>
     </div>

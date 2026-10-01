@@ -25,15 +25,17 @@ const Home = () => {
 
   return (
     <div className='w-full overflow-x-hidden'>
-      <div className='relative mt-[70px] w-full h-[58vh] min-h-[320px] sm:h-[64vh] lg:h-[calc(100vh-70px)] lg:min-h-[520px] overflow-hidden bg-gradient-to-l from-[#141414] to-[#0c2025]'>
+      <section className='relative mt-[70px] h-[78vh] min-h-[480px] overflow-hidden bg-[#0c2025] lg:h-[calc(100vh-70px)] lg:min-h-[560px]'>
         <Background heroCount={heroCount} />
-        <div className='absolute inset-0 bg-gradient-to-r from-[#0c2025]/90 via-[#0c2025]/55 to-transparent' />
-        <Hero
-          heroCount={heroCount}
-          setHeroCount={setHeroCount}
-          heroData={heroData[heroCount]}
-        />
-      </div>
+        <div className='absolute inset-0 bg-gradient-to-t from-[#0c2025]/80 via-[#0c2025]/25 to-[#0c2025]/20 sm:bg-gradient-to-r sm:from-[#0c2025]/80 sm:via-[#0c2025]/35 sm:to-transparent' />
+        <div className='relative z-10 flex h-full items-end px-5 pb-8 sm:items-center sm:px-12 lg:px-16'>
+          <Hero
+            heroCount={heroCount}
+            setHeroCount={setHeroCount}
+            heroData={heroData[heroCount]}
+          />
+        </div>
+      </section>
 
       <Product />
       <OurPolicy />

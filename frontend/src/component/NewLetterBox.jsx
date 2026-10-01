@@ -11,8 +11,8 @@ function NewLetterBox() {
             Subscribe Now and Enjoy Exclusive Savings,Special Deals and Early Access to New collection.
         </p>
         <form onSubmit={handleSubmit} className='w-full max-w-xl flex flex-col sm:flex-row items-stretch gap-3 mt-2'>
-            <input type="email" placeholder='Enter Your Email' className='min-w-0 flex-1 h-11 placeholder:text-black bg-slate-300 px-4 rounded-lg shadow-sm shadow-black' required />
-            <button type='submit' className='h-11 shrink-0 px-6 text-sm sm:text-base hover:bg-slate-500 cursor-pointer bg-[#2e3030c9] text-white border border-[#80808049] rounded-lg shadow-sm shadow-black'>Subscribe</button>
+            <input type="email" placeholder='Enter Your Email' className='h-11 w-full sm:min-w-0 sm:flex-1 placeholder:text-black bg-slate-300 px-4 rounded-lg shadow-sm shadow-black' required />
+            <button type='submit' className='h-11 w-full sm:w-auto shrink-0 px-6 text-sm sm:text-base hover:bg-slate-500 cursor-pointer bg-[#2e3030c9] text-white border border-[#80808049] rounded-lg shadow-sm shadow-black'>Subscribe</button>
         </form>
     </div>
   )

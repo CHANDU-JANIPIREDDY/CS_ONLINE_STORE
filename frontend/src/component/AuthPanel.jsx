@@ -73,107 +73,112 @@ const AuthPanel = ({ onClose }) => {
 
   return (
     <>
-      <div className='fixed inset-0 z-40' onClick={onClose} />
-      <div className='absolute top-[78px] right-2 sm:right-4 z-50 w-[min(380px,calc(100vw-16px))] max-h-[calc(100vh-160px)] lg:max-h-[calc(100vh-100px)] overflow-y-auto rounded-xl border border-[#96969655] bg-[#0c2025] text-white shadow-2xl p-4'>
-        <div className='flex items-center justify-between mb-3'>
-          <p className='text-[15px] font-semibold'>
-            WELCOME TO <span className='text-red-500'>CS STORE</span>
-          </p>
-          <button type='button' onClick={onClose} className='text-white cursor-pointer' aria-label='Close'>
-            <IoMdClose className='w-[22px] h-[22px]' />
-          </button>
-        </div>
-
-        <div className='grid grid-cols-2 gap-2 mb-4'>
-          <button
-            type='button'
-            onClick={() => switchMode('login')}
-            className={`h-[40px] rounded-lg text-[14px] font-semibold cursor-pointer ${mode === 'login' ? 'bg-[#6060f5]' : 'bg-[#1c3338]'}`}
-          >
-            Login
-          </button>
-          <button
-            type='button'
-            onClick={() => switchMode('register')}
-            className={`h-[40px] rounded-lg text-[14px] font-semibold cursor-pointer ${mode === 'register' ? 'bg-[#6060f5]' : 'bg-[#1c3338]'}`}
-          >
-            Register
-          </button>
-        </div>
-
-        <form onSubmit={mode === 'login' ? handleLogin : handleSignUp} className='flex flex-col gap-3'>
-          <button
-            type='button'
-            onClick={googleAuth}
-            className='w-full h-[46px] bg-[#42656cae] rounded-lg flex items-center justify-center gap-[10px] cursor-pointer text-sm'
-          >
-            <img src="https://static.vecteezy.com/system/resources/previews/022/613/027/non_2x/google-icon-logo-symbol-free-png.png" alt="" className='w-[18px]' />
-            {mode === 'login' ? 'Login with Google' : 'Register with Google'}
-          </button>
-
-          <div className='w-full flex items-center gap-[10px] text-xs text-[#d0d0d0]'>
-            <div className='flex-1 h-[1px] bg-[#96969635]'></div>
-            OR
-            <div className='flex-1 h-[1px] bg-[#96969635]'></div>
+      <div className='fixed inset-0 z-40 bg-[#04141c]/35 backdrop-blur-[2px]' onClick={onClose} />
+      <div className='fixed z-50 left-1/2 top-1/2 w-[min(400px,calc(100vw-32px))] -translate-x-1/2 -translate-y-1/2 sm:left-auto sm:right-4 sm:top-[78px] sm:w-[400px] sm:translate-x-0 sm:translate-y-0'>
+      <div className='glass-water relative rounded-[28px] text-white'>
+        <div className='relative z-10 max-h-[calc(100vh-48px)] overflow-y-auto p-4 sm:max-h-[calc(100vh-110px)] sm:p-5'>
+          <div className='mb-4 flex items-center justify-between gap-3'>
+            <div>
+              <p className='text-[11px] uppercase tracking-[0.22em] text-[#d8fcff]/80'>Welcome to</p>
+              <p className='text-lg font-semibold'>CS Store</p>
+            </div>
+            <button type='button' onClick={onClose} className='flex h-9 w-9 items-center justify-center rounded-full border border-white/30 bg-white/10 cursor-pointer' aria-label='Close'>
+              <IoMdClose className='h-5 w-5' />
+            </button>
           </div>
 
-          {mode === 'register' && (
-            <input
-              type='text'
-              className='w-full h-[46px] border-2 border-[#95969635] rounded-lg bg-transparent placeholder-[#ffffffc7] px-[16px] font-semibold focus:outline-none focus:border-[#6060f5]'
-              placeholder='User Name'
-              required
-              value={name}
-              onChange={(e) => setName(e.target.value)}
-            />
-          )}
-
-          <input
-            type='email'
-            className='w-full h-[46px] border-2 border-[#95969635] rounded-lg bg-transparent placeholder-[#ffffffc7] px-[16px] font-semibold focus:outline-none focus:border-[#6060f5]'
-            placeholder='Email'
-            required
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-          />
-
-          <div className='relative w-full'>
-            <input
-              type={showPassword ? 'text' : 'password'}
-              className='w-full h-[46px] border-2 border-[#95969635] rounded-lg bg-transparent placeholder-[#ffffffc7] px-[16px] pr-[40px] font-semibold focus:outline-none focus:border-[#6060f5]'
-              placeholder='Password'
-              required
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-            />
-            {!showPassword && (
-              <MdOutlineRemoveRedEye className='absolute right-3 top-1/2 -translate-y-1/2 cursor-pointer' onClick={() => setShowPassword(true)} />
-            )}
-            {showPassword && (
-              <IoMdEye className='absolute right-3 top-1/2 -translate-y-1/2 cursor-pointer' onClick={() => setShowPassword(false)} />
-            )}
+          <div className='mb-4 grid grid-cols-2 gap-2 rounded-2xl border border-white/20 bg-white/10 p-1'>
+            <button
+              type='button'
+              onClick={() => switchMode('login')}
+              className={`h-10 rounded-xl text-sm font-semibold cursor-pointer ${mode === 'login' ? 'bg-white/85 text-[#0c2025]' : 'text-white'}`}
+            >
+              Login
+            </button>
+            <button
+              type='button'
+              onClick={() => switchMode('register')}
+              className={`h-10 rounded-xl text-sm font-semibold cursor-pointer ${mode === 'register' ? 'bg-white/85 text-[#0c2025]' : 'text-white'}`}
+            >
+              Register
+            </button>
           </div>
 
-          <button className='w-full h-[46px] bg-[#6060f5] hover:bg-[#4f4fe0] transition-colors rounded-lg text-[16px] font-semibold cursor-pointer'>
-            {mode === 'login' ? 'Login' : 'Create Account'}
-          </button>
+          <form onSubmit={mode === 'login' ? handleLogin : handleSignUp} className='flex flex-col gap-3'>
+            <button
+              type='button'
+              onClick={googleAuth}
+              className='flex h-12 w-full items-center justify-center gap-2 rounded-2xl border border-white/30 bg-white/15 text-sm cursor-pointer hover:bg-white/25'
+            >
+              <img src="https://static.vecteezy.com/system/resources/previews/022/613/027/non_2x/google-icon-logo-symbol-free-png.png" alt="" className='w-[18px]' />
+              {mode === 'login' ? 'Login with Google' : 'Register with Google'}
+            </button>
 
-          {mode === 'login' ? (
-            <p className='text-center text-sm'>
-              You have no account?{' '}
-              <span className='text-[#8b8bff] font-semibold cursor-pointer' onClick={() => switchMode('register')}>
-                Create New Account
-              </span>
-            </p>
-          ) : (
-            <p className='text-center text-sm'>
-              You have an account?{' '}
-              <span className='text-[#8b8bff] font-semibold cursor-pointer' onClick={() => switchMode('login')}>
-                Login
-              </span>
-            </p>
-          )}
-        </form>
+            <div className='flex items-center gap-3 text-xs tracking-[0.16em] text-white/70'>
+              <div className='h-px flex-1 bg-white/25'></div>
+              OR
+              <div className='h-px flex-1 bg-white/25'></div>
+            </div>
+
+            {mode === 'register' && (
+              <input
+                type='text'
+                className='glass-field'
+                placeholder='User Name'
+                required
+                value={name}
+                onChange={(e) => setName(e.target.value)}
+              />
+            )}
+
+            <input
+              type='email'
+              className='glass-field'
+              placeholder='Email'
+              required
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+            />
+
+            <div className='relative w-full'>
+              <input
+                type={showPassword ? 'text' : 'password'}
+                className='glass-field pr-11'
+                placeholder='Password'
+                required
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+              />
+              {!showPassword && (
+                <MdOutlineRemoveRedEye className='absolute right-3 top-1/2 -translate-y-1/2 cursor-pointer' onClick={() => setShowPassword(true)} />
+              )}
+              {showPassword && (
+                <IoMdEye className='absolute right-3 top-1/2 -translate-y-1/2 cursor-pointer' onClick={() => setShowPassword(false)} />
+              )}
+            </div>
+
+            <button className='h-12 w-full cursor-pointer rounded-2xl bg-gradient-to-r from-[#7de7f2] to-[#5aa7ff] text-base font-semibold text-[#072026] hover:brightness-105'>
+              {mode === 'login' ? 'Login' : 'Create Account'}
+            </button>
+
+            {mode === 'login' ? (
+              <p className='text-center text-sm text-white/85'>
+                You have no account?{' '}
+                <span className='cursor-pointer font-semibold text-white' onClick={() => switchMode('register')}>
+                  Create New Account
+                </span>
+              </p>
+            ) : (
+              <p className='text-center text-sm text-white/85'>
+                You have an account?{' '}
+                <span className='cursor-pointer font-semibold text-white' onClick={() => switchMode('login')}>
+                  Login
+                </span>
+              </p>
+            )}
+          </form>
+        </div>
+      </div>
       </div>
     </>
   );
