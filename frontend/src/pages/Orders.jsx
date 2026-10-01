@@ -37,39 +37,32 @@ useEffect(()=>{
 },[])
 
   return (
-    <div className='w-[99vw] min-h-[100vh] p-[20px] pb-[150px] overflow-hidden bg-gradient-to-l from-[#141414] to-[#0c2025]'>
-        <div className='h-[8%] w-[100%] text-center mt-[80px]'>
+    <div className='w-full min-h-screen px-4 sm:px-6 pb-28 lg:pb-10 overflow-x-hidden bg-gradient-to-l from-[#141414] to-[#0c2025]'>
+        <div className='w-full text-center mt-20'>
           <Title text1={"MY"} text2={"ORDERS"}/>
         </div>
-        <div className='w-[100%] h-[92%]  flex flex-wrap gap-[20px]'>
+        <div className='w-full max-w-5xl mx-auto flex flex-col gap-4'>
         {
           oredrData.map((item, index) => (
-            <div key={index} className='w-[100%] h-[10%] border-t border-b'>
-              <div className='w-[100%] h-[80%] flex items-start gap-6 bg-[#51808048] py-[10px] px-[20px] rounded-2xl relative'> 
-                <img src={item.image1} alt="" className='w-[130px] h-[130px] rounded-md' />
-                <div className='flex items-start  justify-center flex-col gap-[5px]'>
-                  <p className='md:text-[23px] text-[20px] text-[#f3f9fc]'>{item.name}</p>
-                  <div className='flex items-center gap-[8px] md:gap-[20px]'>
-                    <p className='md:text-[18px] text-[12px] text-[#aaf4e7] '>{currency} {item.price}</p>
-                    <p className='md:text-[18px] text-[12px] text-[#aaf4e7] '>Quantity: {item.quantity}</p>
-                    <p className='md:text-[18px] text-[12px] text-[#aaf4e7] '>Size: {item.size}</p>
+            <div key={index} className='w-full border-t border-b border-white/10'>
+              <div className='w-full flex flex-col sm:flex-row sm:items-center gap-4 bg-[#51808048] py-3 px-4 rounded-2xl'>
+                <img src={item.image1} alt="" className='w-24 h-24 sm:w-32 sm:h-32 rounded-md object-cover shrink-0' />
+                <div className='flex-1 min-w-0 flex items-start justify-center flex-col gap-1.5'>
+                  <p className='text-base sm:text-xl text-[#f3f9fc] break-words'>{item.name}</p>
+                  <div className='flex flex-wrap items-center gap-x-4 gap-y-1'>
+                    <p className='text-xs sm:text-base text-[#aaf4e7]'>{currency} {item.price}</p>
+                    <p className='text-xs sm:text-base text-[#aaf4e7]'>Quantity: {item.quantity}</p>
+                    <p className='text-xs sm:text-base text-[#aaf4e7]'>Size: {item.size}</p>
                   </div>
-                  <div className='flex items-center'>
-                    <p className='md:text-[18px] text-[12px] text-[#aaf4e7]'>Date: <span className='text-[#e4fbff] pl-[10px] md:text-[16px] text-[11px]'>{new Date(item.date).toDateString()}</span></p>
+                  <p className='text-xs sm:text-base text-[#aaf4e7]'>Date: <span className='text-[#e4fbff] pl-2 text-[11px] sm:text-sm'>{new Date(item.date).toDateString()}</span></p>
+                  <p className='text-xs sm:text-base text-[#aaf4e7] break-words'>PaymenrMethod: {item.paymentMethod}</p>
+                </div>
+                <div className='flex items-center justify-between sm:flex-col sm:items-end gap-3 shrink-0'>
+                  <div className='flex items-center gap-1.5'>
+                    <p className='min-w-2 h-2 rounded-full bg-green-500'></p>
+                    <p className='text-xs sm:text-base text-[#f3f9fc]'>{item.status}</p>
                   </div>
-                  <div className='flex items-center'>
-                     <p className='md:text-[16px] text-[12px] text-[#aaf4e7] '>PaymenrMethod: {item.paymentMethod}</p>
-                  </div>
-                  <div className='absolute md:left-[55%] md:top-[40%] right-[2%] top-[2%]'>
-                      <div className='flex items-center gap-[5px]'>
-                        <p className='min-w-2 h-2 rounded-full bg-green-500'></p>
-                        <p className='md:text-[17px] text-[10px] text-[#f3f9fc]'>{item.status}</p>
-                      </div>
-                  </div>
-                   <div className='absolute md:right-[5%] right-[1%] md:top-[40%] top-[70%]'>
-                      <button className='md:px-[15px] px-[5px] py-[3px] md:py-[7px] rounded-md bg-[#101919] text-[#f3f9fc] text-[12px] md:text-[16px] cursor-pointer 
-                      active:bg-slate-500' onClick={loadOrderData}>Track Order</button>
-                   </div>
+                  <button className='px-3 py-1.5 sm:px-4 sm:py-2 rounded-md bg-[#101919] text-[#f3f9fc] text-xs sm:text-base cursor-pointer active:bg-slate-500' onClick={loadOrderData}>Track Order</button>
                 </div>
               </div>
             </div>

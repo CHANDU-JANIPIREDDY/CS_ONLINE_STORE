@@ -86,11 +86,11 @@ function Ai() {
     }
 
     return (
-        <div className='fixed lg:bottom-[20px] md:bottom-[40px] bottom-[80px] left-[2%]' onClick={handleClick}>
+        <div className='fixed bottom-[88px] left-3 lg:bottom-5 lg:left-5 z-30' onClick={handleClick}>
             <img
                 src="https://res.cloudinary.com/dymntfrwl/image/upload/v1755844557/chatbot-chat-message-vectorart_guoglc.png"
                 alt="Chatbot"
-                className='w-[80px] cursor-pointer animate-pulse transition-transform hover:scale-110 drop-shadow-[0_0_12px_rgba(79,70,229,0.7)]'
+                className='w-14 sm:w-16 lg:w-20 cursor-pointer animate-pulse transition-transform hover:scale-110 drop-shadow-[0_0_12px_rgba(79,70,229,0.7)]'
             />
         </div>
     )

@@ -52,13 +52,12 @@ function ProductDetail() {
 
   return productData ? (
     <div>
-      <div className="w-full min-h-screen bg-gradient-to-l from-[#141414] to-[#0c2025] flex flex-col lg:flex-row items-start justify-start gap-6 pt-20">
-        {/* Images Section */}
-        <div className="lg:w-1/2 w-full flex flex-col lg:flex-row items-center justify-center gap-4">
-          <div className="lg:w-[20%] flex lg:flex-col flex-row gap-3 flex-wrap items-center justify-center">
+      <div className="w-full min-h-screen bg-gradient-to-l from-[#141414] to-[#0c2025] flex flex-col lg:flex-row items-start justify-center gap-6 pt-24 px-4 sm:px-6 lg:px-10 pb-8">
+        <div className="lg:w-1/2 w-full flex flex-col-reverse sm:flex-row items-center justify-center gap-4">
+          <div className="w-full sm:w-auto flex sm:flex-col flex-row gap-3 flex-wrap items-center justify-center">
             {[image1, image2, image3, image4].map((img, idx) => (
               img && (
-                <div key={idx} className="w-14 h-14 md:w-20 md:h-20 lg:w-24 lg:h-28 bg-slate-300 border border-[#80808049] rounded-md overflow-hidden">
+                <div key={idx} className="w-14 h-14 sm:w-16 sm:h-16 md:w-20 md:h-20 lg:w-24 lg:h-28 bg-slate-300 border border-[#80808049] rounded-md overflow-hidden shrink-0">
                   <img
                     src={img}
                     alt="thumb"
@@ -69,13 +68,13 @@ function ProductDetail() {
               )
             ))}
           </div>
-          <div className="lg:w-[70%] w-[85%] h-[350px] md:h-[450px]  overflow-hidden shadow-md">
+          <div className="w-full sm:flex-1 max-w-xl h-[280px] sm:h-[380px] md:h-[460px] overflow-hidden shadow-md">
             <img src={image} alt="main" className="w-full h-full object-contain rounded-lg" />
           </div>
         </div>
 
        
-        <div className="lg:w-1/2 w-full flex flex-col gap-3 px-5 lg:px-0">
+        <div className="lg:w-1/2 w-full max-w-xl flex flex-col gap-3">
           <h1 className="text-2xl md:text-3xl text-white lg:text-4xl font-semibold text-aliceblue">{productData.name?.toUpperCase()}</h1>
 
           <div className="flex items-center gap-1">
@@ -129,12 +128,12 @@ function ProductDetail() {
       </div>
 
      
-      <div className="w-full min-h-[70vh] bg-gradient-to-l from-[#141414] to-[#0c2025] pt-15 flex flex-col">
-        <div className="flex px-5 lg:px-20 gap-3">
+      <div className="w-full bg-gradient-to-l from-[#141414] to-[#0c2025] pt-8 pb-28 lg:pb-12 flex flex-col">
+        <div className="flex flex-wrap px-4 sm:px-6 lg:px-10 gap-3">
           <p className="border px-4 py-2 text-xs md:text-sm text-white">Description</p>
           <p className="border px-4 py-2 text-xs md:text-sm text-white">Reviews (124)</p>
         </div>
-        <div className="w-[90%] md:w-[80%] lg:w-[70%] mx-auto my-5 bg-[#3336397c] text-white text-sm md:text-base lg:text-lg px-4 md:px-6 py-5 rounded-md">
+        <div className="w-[92%] md:w-[85%] lg:w-[70%] mx-auto my-5 bg-[#3336397c] text-white text-sm md:text-base lg:text-lg px-4 md:px-6 py-5 rounded-md">
           Upgrade your wardrobe with this stylish slim-fit cotton shirt, available now on CS-Store. Crafted from breathable,
           high-quality fabric, it offers all-day comfort and effortless style. Easy to maintain and perfect for any setting, this
           shirt is a must-have essential for those who value both fashion and function.

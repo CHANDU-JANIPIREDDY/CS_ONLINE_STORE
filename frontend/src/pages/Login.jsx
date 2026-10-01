@@ -63,9 +63,9 @@ const Login = () => {
   };
 
   return (
-    <div className='w-full min-h-screen bg-gradient-to-l from-[#141414] to-[#0c2025] text-white flex flex-col items-center justify-start py-6'>
+    <div className='w-full min-h-screen bg-gradient-to-l from-[#141414] to-[#0c2025] text-white flex flex-col items-center justify-start py-6 px-4'>
       <div className='w-full h-[70px] flex items-center justify-start px-5 sm:px-[30px] gap-[10px] cursor-pointer' onClick={() => navigate('/')}>
-        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/42/Counter-Strike_CS_logo.svg/1024px-Counter-Strike_CS_logo.svg.png" alt="" className='h-[50px] w-[50px] sm:h-[60px] sm:w-[60px]' />
+        <img src="https://upload.wikimedia.org/wikipedia/commons/4/42/Counter-Strike_CS_logo.svg" alt="CS Store" className='h-12 sm:h-14 w-auto object-contain' />
       </div>
 
       <div className='w-full flex flex-col items-center justify-center gap-2 text-center px-4 mb-6'>

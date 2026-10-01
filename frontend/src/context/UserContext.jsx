@@ -8,6 +8,7 @@ export const userDataContext = createContext();
 
 export function UserProvider({ children }) {
   const [userData, setUserData] = useState(null);
+  const [userLoading, setUserLoading] = useState(true);
   const { serverUrl } = useContext(authDataContext);
 
   const getCurrentUser = async () => {
@@ -21,6 +22,8 @@ export function UserProvider({ children }) {
     } catch (error) {
       console.error("Failed to fetch User:", error);
       setUserData(null);
+    } finally {
+      setUserLoading(false);
     }
   };
 
@@ -32,6 +35,7 @@ export function UserProvider({ children }) {
     userData,
     setUserData,
     getCurrentUser,
+    userLoading,
   };
 
   return (

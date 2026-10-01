@@ -92,61 +92,47 @@ function PlaceOrder() {
       }
     }
   return (
-    <div className='w-[100vw] min-h-[100vh] bg-gradient-to-l from-[#141414] to-[#0c2025] flex items-center justify-center flex-col md:flex-row gap-[50px] relative'>
-      <div className='lg:w-[50%] w-[100%] h-[100%] flex items-center justify-center lg:mt-[0px] mt-[90px]'>
-        <form action="" onSubmit={onSubmitHandler} className='lg:w-[70%] w-[95%] lg:h-[70%] h-[100%]'>
-          <div className='py-[10px]'>
+    <div className='w-full min-h-screen bg-gradient-to-l from-[#141414] to-[#0c2025] flex items-start justify-center flex-col lg:flex-row gap-8 px-4 sm:px-6 pt-24 pb-28 lg:pb-12'>
+      <div className='w-full lg:w-1/2 flex items-center justify-center'>
+        <form onSubmit={onSubmitHandler} className='w-full max-w-xl'>
+          <div className='py-2'>
             <Title text1={'DELIVERY'} text2={'INFORMATION'}/>
           </div>
-          <div className='w-[100%] h-[70px] flex items-center justify-between px-[10px]'>
-            <input type="text" placeholder='First Name' className='w-[48%] h-[50px] rounded-md bg-slate-700 placeholder:text-[white] text-[18px] px-[20px] text-[white]
-            shadow-sm shadow-[#343434]' required  onChange={onChangeHandler} name='firstName' value={formData.firstName}/>
-            <input type="text" placeholder='Last Name' className='w-[48%] h-[50px] rounded-md bg-slate-700 placeholder:text-[white] text-[18px] px-[20px] text-[white]
-            shadow-sm shadow-[#343434]' required onChange={onChangeHandler} name='lastName' value={formData.lastName}/>
+          <div className='w-full flex flex-col sm:flex-row items-center justify-between gap-3 mb-3'>
+            <input type="text" placeholder='First Name' className='w-full sm:w-[48%] h-12 rounded-md bg-slate-700 placeholder:text-white text-base px-4 text-white shadow-sm shadow-[#343434]' required  onChange={onChangeHandler} name='firstName' value={formData.firstName}/>
+            <input type="text" placeholder='Last Name' className='w-full sm:w-[48%] h-12 rounded-md bg-slate-700 placeholder:text-white text-base px-4 text-white shadow-sm shadow-[#343434]' required onChange={onChangeHandler} name='lastName' value={formData.lastName}/>
           </div>
-          <div className='w-[100%] h-[70px] flex items-center justify-between px-[10px]'>
-            <input type="text" placeholder='Email Address' className='w-[100%] h-[50px] rounded-md bg-slate-700 placeholder:text-[white] text-[18px] px-[20px] text-[white]
-            shadow-sm shadow-[#343434]' required onChange={onChangeHandler} name='email' value={formData.email}/>
+          <div className='w-full mb-3'>
+            <input type="email" placeholder='Email Address' className='w-full h-12 rounded-md bg-slate-700 placeholder:text-white text-base px-4 text-white shadow-sm shadow-[#343434]' required onChange={onChangeHandler} name='email' value={formData.email}/>
           </div>
-          <div className='w-[100%] h-[70px] flex items-center justify-between px-[10px]'>
-            <input type="text" placeholder='Street' className='w-[100%] h-[50px] rounded-md bg-slate-700 placeholder:text-[white] text-[18px] px-[20px] text-[white]
-            shadow-sm shadow-[#343434]' required onChange={onChangeHandler} name='street' value={formData.street}/>
+          <div className='w-full mb-3'>
+            <input type="text" placeholder='Street' className='w-full h-12 rounded-md bg-slate-700 placeholder:text-white text-base px-4 text-white shadow-sm shadow-[#343434]' required onChange={onChangeHandler} name='street' value={formData.street}/>
           </div>
-          <div className='w-[100%] h-[70px] flex items-center justify-between px-[10px]'>
-            <input type="text" placeholder='City' className='w-[48%] h-[50px] rounded-md bg-slate-700 placeholder:text-[white] text-[18px] px-[20px] text-[white]
-            shadow-sm shadow-[#343434]' required  onChange={onChangeHandler} name='city' value={formData.city}/>
-            <input type="text" placeholder='State' className='w-[48%] h-[50px] rounded-md bg-slate-700 placeholder:text-[white] text-[18px] px-[20px] text-[white]
-            shadow-sm shadow-[#343434]' required  onChange={onChangeHandler} name='state' value={formData.state}/>
+          <div className='w-full flex flex-col sm:flex-row items-center justify-between gap-3 mb-3'>
+            <input type="text" placeholder='City' className='w-full sm:w-[48%] h-12 rounded-md bg-slate-700 placeholder:text-white text-base px-4 text-white shadow-sm shadow-[#343434]' required  onChange={onChangeHandler} name='city' value={formData.city}/>
+            <input type="text" placeholder='State' className='w-full sm:w-[48%] h-12 rounded-md bg-slate-700 placeholder:text-white text-base px-4 text-white shadow-sm shadow-[#343434]' required  onChange={onChangeHandler} name='state' value={formData.state}/>
           </div>
-          <div className='w-[100%] h-[70px] flex items-center justify-between px-[10px]'>
-            <input type="text" placeholder='Pincode' className='w-[48%] h-[50px] rounded-md bg-slate-700 placeholder:text-[white] text-[18px] px-[20px] text-[white]
-            shadow-sm shadow-[#343434]' required onChange={onChangeHandler} name='pinCode' value={formData.pinCode}/>
-            <input type="text" placeholder='Country' className='w-[48%] h-[50px] rounded-md bg-slate-700 placeholder:text-[white] text-[18px] px-[20px] text-[white]
-            shadow-sm shadow-[#343434]' required onChange={onChangeHandler} name='country' value={formData.country}/>
+          <div className='w-full flex flex-col sm:flex-row items-center justify-between gap-3 mb-3'>
+            <input type="text" placeholder='Pincode' className='w-full sm:w-[48%] h-12 rounded-md bg-slate-700 placeholder:text-white text-base px-4 text-white shadow-sm shadow-[#343434]' required onChange={onChangeHandler} name='pinCode' value={formData.pinCode}/>
+            <input type="text" placeholder='Country' className='w-full sm:w-[48%] h-12 rounded-md bg-slate-700 placeholder:text-white text-base px-4 text-white shadow-sm shadow-[#343434]' required onChange={onChangeHandler} name='country' value={formData.country}/>
           </div>
-          <div className='w-[100%] h-[70px] flex items-center justify-between px-[10px]'>
-            <input type="text" placeholder='Phone' className='w-[100%] h-[50px] rounded-md bg-slate-700 placeholder:text-[white] text-[18px] px-[20px]  text-[white]
-            shadow-sm shadow-[#343434]' required onChange={onChangeHandler} name='phone' value={formData.phone}/>
+          <div className='w-full mb-4'>
+            <input type="tel" placeholder='Phone' className='w-full h-12 rounded-md bg-slate-700 placeholder:text-white text-base px-4 text-white shadow-sm shadow-[#343434]' required onChange={onChangeHandler} name='phone' value={formData.phone}/>
           </div>
-          <div>
-            <button type='submit' className='text-[18px] active:bg-slate-500 cursor-pointer bg-[#3bcee848] py-[10px] px-[50px] rounded-2xl
-            text-white flex items-center justify-center gap-[20px] absolute lg:right-[20%] bottom-[10%] right-[35%] border-[1px] border-[#80808049]
-            ml-[30px] mt-[20px]'>PLACE ORDER</button>
-          </div>
+          <button type='submit' className='w-full sm:w-auto text-base sm:text-lg active:bg-slate-500 cursor-pointer bg-[#3bcee848] py-3 px-8 rounded-2xl text-white flex items-center justify-center border border-[#80808049]'>PLACE ORDER</button>
         </form>
       </div>
-        <div className='lg:w-[50%] w-[100%] min-h-[100%] flex items-centerjustify-center gap-[30px]'>
-          <div className='lg:w-[70%] w-[90%] lg:h-[70%] h-[100%] flex items-center justify-center gap-[10px] flex-col'>
+        <div className='w-full lg:w-1/2 flex items-center justify-center'>
+          <div className='w-full max-w-xl flex items-center justify-center gap-4 flex-col'>
             <CartTotal/>
-             <div className='py-[10px]'>
+             <div className='py-2'>
             <Title text1={'PAYMENT'} text2={'METHOD'}/>
           </div>
-          <div className='w-[100%] h-[30vh] lg:h-[100px] flex items-start mt-[20px] lg:mt-[0px] justify-center gap-[50px]'>
-            <button onClick={()=>setMethod('razorpay')} className={`w-[150px] h-[50px] rounded-sm ${method==='razorpay' ? 'border-[5px] border-blue-900 rounded-sm' : ''}`}>
-              <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQPZ40xDtGQlNnEtDL2er6ICR1UMWoLcSiU0AML-DkEH616YObjoDhq-o2U_0ncsGtdOqU&usqp=CAU" alt="" className='w-[100%] h-[100%] object-fill rounded-sm' />
+          <div className='w-full flex flex-col sm:flex-row flex-wrap items-stretch sm:items-center justify-center gap-4'>
+            <button onClick={()=>setMethod('razorpay')} className={`w-full sm:w-[160px] h-12 rounded-sm overflow-hidden ${method==='razorpay' ? 'border-[5px] border-blue-900' : ''}`}>
+              <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQPZ40xDtGQlNnEtDL2er6ICR1UMWoLcSiU0AML-DkEH616YObjoDhq-o2U_0ncsGtdOqU&usqp=CAU" alt="" className='w-full h-full object-cover rounded-sm' />
             </button>
-            <button onClick={()=>setMethod('cod')} className={`w-[200px] h-[50px] bg-gradient-to-t from-[#95b3f8] to-[white] text-[14px] px-[20px] rounded-sm
-              text-[#332f6f] font-bold ${method==='cod' ? 'border-[5px] border-blue-900 rounded-sm' : ''}`}>CASHON DELIVERY</button>
+            <button onClick={()=>setMethod('cod')} className={`w-full sm:w-auto min-h-12 bg-gradient-to-t from-[#95b3f8] to-white text-sm px-5 rounded-sm text-[#332f6f] font-bold ${method==='cod' ? 'border-[5px] border-blue-900' : ''}`}>CASH ON DELIVERY</button>
           </div>
           </div>
         </div>

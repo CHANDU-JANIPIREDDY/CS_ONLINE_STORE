@@ -78,18 +78,18 @@ useEffect(()=>{
 },[category,subCategory,search,showSearch])
 
   return (
-    <div className='w-[99vw] min-h-[100vh] bg-gradient-to-r from-[#141414] to-[#0c2025] 
-      flex flex-col md:flex-row items-start justify-start pt-[70px] overflow-x-hidden z-[2]  pb-[100px]'>
-        <div className={`md:fixed md:w-[30vw] lg:w-[20vw] w-full ${showFilter ? "block" : "h-[60px]"} md:h-[100vh] p-[20px] border-r border-gray-400 text-[#aaf5fa] top-[70px] overflow-y-auto`}>
+    <div className='w-full min-h-screen bg-gradient-to-r from-[#141414] to-[#0c2025] 
+      flex flex-col lg:flex-row items-start justify-start pt-[70px] overflow-x-hidden pb-28 lg:pb-10'>
+        <div className={`w-full lg:w-64 lg:sticky lg:top-[70px] lg:h-[calc(100vh-70px)] shrink-0 p-4 sm:p-5 border-b lg:border-b-0 lg:border-r border-gray-400 text-[#aaf5fa] overflow-y-auto`}>
 
-          <p className='text-[25px] font-semibold flex gap-[5px] items-center justify-start' onClick={()=>setShowFilter(prev=>!prev)}>FILTERS
-            {!showFilter &&<FaAngleRight className='text-[18px] md:hidden' />}
-            {showFilter &&<FaChevronDown  className='text-[18px] md:hidden' />}
+          <p className='text-xl sm:text-2xl font-semibold flex gap-2 items-center justify-start cursor-pointer lg:cursor-default' onClick={()=>setShowFilter(prev=>!prev)}>FILTERS
+            {!showFilter &&<FaAngleRight className='text-[18px] lg:hidden' />}
+            {showFilter &&<FaChevronDown  className='text-[18px] lg:hidden' />}
 
           </p>
-          <div className={`border-[2px] border-[#dedcdc] pl-5 py-3 mt-6 rounded-md bg-slate-600 ${showFilter ? "" :" hidden"} md:block`}>
-            <p className='text-[18px] text-[#f8fafa]'>CATEGORIES</p>
-            <div className='w-[230px] h-[120px] flex items-start justify-center gap-[10px] flex-col'>
+          <div className={`border-2 border-[#dedcdc] pl-5 py-3 mt-4 rounded-md bg-slate-600 ${showFilter ? "" :" hidden"} lg:block`}>
+            <p className='text-base sm:text-lg text-[#f8fafa]'>CATEGORIES</p>
+            <div className='w-full flex items-start justify-center gap-2 flex-col py-2'>
               <p className='flex items-center justify-center gap-[10px] text-[16px] font-light'> <input type="checkbox" value={'Men'} className='w-3' onChange={toggleCategory} />Men</p>
               <p className='flex items-center justify-center gap-[10px] text-[16px] font-light'> <input type="checkbox" value={'Women'} className='w-3' onChange={toggleCategory} />Women</p>
               <p className='flex items-center justify-center gap-[10px] text-[16px] font-light'> <input type="checkbox" value={'Kids'} className='w-3' onChange={toggleCategory}  />Kids</p>
@@ -97,9 +97,9 @@ useEffect(()=>{
             </div>
           </div>
 
-          <div className={`border-[2px] border-[#dedcdc] pl-5 py-3 mt-6 rounded-md bg-slate-600 ${showFilter ? "" : "hidden" } md:block`}>
-            <p className='text-[18px] text-[#f8fafa]'>SUB-CATEGORIES</p>
-            <div className='w-[230px] h-[120px] flex items-start justify-center gap-[10px] flex-col'>
+          <div className={`border-2 border-[#dedcdc] pl-5 py-3 mt-4 rounded-md bg-slate-600 ${showFilter ? "" : "hidden" } lg:block`}>
+            <p className='text-base sm:text-lg text-[#f8fafa]'>SUB-CATEGORIES</p>
+            <div className='w-full flex items-start justify-center gap-2 flex-col py-2'>
               <p className='flex items-center justify-center gap-[10px] text-[16px] font-light'> <input type="checkbox" value={'TopWear'} className='w-3'onChange={toggleSubCategory}  />TopWear</p>
               <p className='flex items-center justify-center gap-[10px] text-[16px] font-light'> <input type="checkbox" value={'BottomWear'} className='w-3' onChange={toggleSubCategory}/>BottomWear</p>
               <p className='flex items-center justify-center gap-[10px] text-[16px] font-light'> <input type="checkbox" value={'WinterWear'} className='w-3' onChange={toggleSubCategory}/>WinterWear</p>
@@ -108,16 +108,16 @@ useEffect(()=>{
           </div>
 
         </div>
-          <div className='lg:pl-[20%] md:pl-[30vw] md:py-[10px]'>
-            <div className='lg:w-[80vw] md:w-[80vw] w-[100vw] p-[10px] flex justify-between flex-col lg:flex-row lg:px-[50px]'>
+          <div className='w-full min-w-0 flex-1 p-4 sm:p-6'>
+            <div className='w-full flex justify-between items-start sm:items-center flex-col sm:flex-row gap-4 mb-4'>
               <Title text1={"ALL"} text2={"COLLECTIONS"}/>
-              <select name="" id="" className='bg-slate-600 w-[60%] md:w-[200px] h-[50px] px-[10px] text-white rounded-lg hover:border-[#46d1f7] border-[2px]' onChange={(e)=>setSortType(e.target.value)}>
-                <option value="relavent" className='w-[100%] h-[100%]'> Sort By: Relavent</option>
-                <option value="low-high" className='w-[100%] h-[100%]'>Sort By: Low to High </option>
-                <option value="high-low" className='w-[100%] h-[100%]'>Sort By: High to Low</option>
+              <select name="" id="" className='bg-slate-600 w-full sm:w-[220px] h-12 px-3 text-white rounded-lg hover:border-[#46d1f7] border-2' onChange={(e)=>setSortType(e.target.value)}>
+                <option value="relavent"> Sort By: Relavent</option>
+                <option value="low-high">Sort By: Low to High </option>
+                <option value="high-low">Sort By: High to Low</option>
               </select>
             </div>
-            <div className='lg:w-[70vw] md:w-[60vw] w-[100vw] min-h-[70vh] flex items-center justify-center flex-wrap gap-[30px]'>
+            <div className='w-full min-h-[50vh] grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 justify-items-center'>
               {
                   filterProduct.map((item,index)=>(
                     <Card key={index} id={item._id} name={item.name} price={item.price} image={item.image1}/>

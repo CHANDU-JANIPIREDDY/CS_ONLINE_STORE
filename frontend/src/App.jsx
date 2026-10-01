@@ -21,6 +21,7 @@ import UserProvider, { userDataContext } from './context/UserContext';
 import NotFound from './pages/NotFound';
 import Ai from './component/Ai';
 import AuthProvider from './context/AuthContext';
+import Loading from './component/Loading';
 
 function App() {
   return (
@@ -32,141 +33,69 @@ function App() {
   );
 }
 
-function AppContent() {
-  const { userData } = useContext(userDataContext);
+function GuestOnly({ children }) {
+  const { userData, userLoading } = useContext(userDataContext);
   const location = useLocation();
 
+  if (userLoading) {
+    return (
+      <div className='min-h-screen flex items-center justify-center bg-[#0c2025]'>
+        <Loading />
+      </div>
+    );
+  }
+
+  if (userData) {
+    return <Navigate to={location.state?.from || '/'} />;
+  }
+
+  return children;
+}
+
+function RequireAuth({ children }) {
+  const { userData, userLoading } = useContext(userDataContext);
+  const location = useLocation();
+
+  if (userLoading) {
+    return (
+      <div className='min-h-screen flex items-center justify-center bg-[#0c2025]'>
+        <Loading />
+      </div>
+    );
+  }
+
+  if (!userData) {
+    return <Navigate to="/login" state={{ from: location.pathname }} />;
+  }
+
+  return children;
+}
+
+function AppContent() {
+  const location = useLocation();
   const hideNavOn = ['/login', '/signup'];
 
   return (
-    
     <>
-    <ToastContainer />
+      <ToastContainer />
       {!hideNavOn.includes(location.pathname) && <Nav />}
       <Routes>
-        <Route
-          path="/login"
-          element={
-            userData ? (
-              <Navigate to={location.state?.from || '/'} />
-            ) : (
-              <Login />
-            )
-          }
-        />
+        <Route path="/login" element={<GuestOnly><Login /></GuestOnly>} />
+        <Route path="/signup" element={<GuestOnly><Registration /></GuestOnly>} />
 
-        <Route
-          path="/signup"
-          element={
-            userData ? (
-              <Navigate to={location.state?.from || '/'} />
-            ) : (
-              <Registration />
-            )
-          }
-        />
+        <Route path="/" element={<Home />} />
+        <Route path="/about" element={<About />} />
+        <Route path="/collection" element={<Collections />} />
+        <Route path="/product" element={<Product />} />
+        <Route path="/contact" element={<Contact />} />
+        <Route path="/productdetail/:productId" element={<ProductDetail />} />
 
-        <Route
-          path="/"
-          element={
-            userData ? (
-              <Home />
-            ) : (
-              <Navigate to="/login" state={{ from: location.pathname }} />
-            )
-          }
-        />
-
-        <Route
-          path="/about"
-          element={
-            userData ? (
-              <About />
-            ) : (
-              <Navigate to="/login" state={{ from: location.pathname }} />
-            )
-          }
-        />
-
-        <Route
-          path="/collection"
-          element={
-            userData ? (
-              <Collections />
-            ) : (
-              <Navigate to="/login" state={{ from: location.pathname }} />
-            )
-          }
-        />
-
-        <Route
-          path="/product"
-          element={
-            userData ? (
-              <Product />
-            ) : (
-              <Navigate to="/login" state={{ from: location.pathname }} />
-            )
-          }
-        />
-
-        <Route
-          path="/contact"
-          element={
-            userData ? (
-              <Contact />
-            ) : (
-              <Navigate to="/login" state={{ from: location.pathname }} />
-            )
-          }
-        />
-
-        <Route
-          path="/productdetail/:productId"
-          element={
-            userData ? (
-              <ProductDetail />
-            ) : (
-              <Navigate to="/login" state={{ from: location.pathname }} />
-            )
-          }
-        />
-
-        <Route
-          path="/cart"
-          element={
-            userData ? (
-              <Cart />
-            ) : (
-              <Navigate to="/login" state={{ from: location.pathname }} />
-            )
-          }
-        />
-
-        <Route
-          path="/placeorder"
-          element={
-            userData ? (
-              <PlaceOrder />
-            ) : (
-              <Navigate to="/login" state={{ from: location.pathname }} />
-            )
-          }
-        />
-
-        <Route
-          path="/order"
-          element={
-            userData ? (
-              <Orders />
-            ) : (
-              <Navigate to="/login" state={{ from: location.pathname }} />
-            )
-          }
-        />
-        <Route path="*" element={<NotFound/>} />
+        <Route path="/cart" element={<RequireAuth><Cart /></RequireAuth>} />
+        <Route path="/placeorder" element={<RequireAuth><PlaceOrder /></RequireAuth>} />
+        <Route path="/order" element={<RequireAuth><Orders /></RequireAuth>} />
+        <Route path="*" element={<NotFound />} />
       </Routes>
-      <Ai/>
+      <Ai />
     </>
   );
 }

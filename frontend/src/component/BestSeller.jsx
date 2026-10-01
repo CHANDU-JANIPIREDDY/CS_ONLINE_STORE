@@ -8,24 +8,22 @@ function BestSeller() {
   let [bestSeller,setBestSeller] = useState([])
 
  useEffect(() => {
-  setBestSeller(products.slice(0, 4)); 
+  setBestSeller(products.slice(0, 4));
 }, [products]);
   return (
-    <div>
-      <div className='h-[8%] w-[100%] text-center mt-[50px]'>
-        <Title text1={"BEST"} text2={"SELLER"}/>
-        <p className='w-[100%] m-auto text-[13px] md:text-[20px] px-[10px] text-blue-100'>
-          Tried, Tested, Loved Discover Over All-Time Best Sellers.
-        </p>
-      </div>
-      <div className='w-[100%] h-[50%] mt-[30px] flex items-center justify-center flex-wrap gap-[60px]'>
+    <section className='w-full px-4 sm:px-6 lg:px-10 py-8 text-center'>
+      <Title text1={"BEST"} text2={"SELLER"}/>
+      <p className='max-w-3xl mx-auto text-sm sm:text-base md:text-lg px-2 text-blue-100'>
+        Tried, Tested, Loved Discover Over All-Time Best Sellers.
+      </p>
+      <div className='mt-8 grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4 max-w-6xl mx-auto justify-items-center'>
         {
           bestSeller.map((item,index)=>(
             <Card key={index} name={item.name} id={item._id} price={item.price} image={item.image1}/>
           ))
         }
       </div>
-    </div>
+    </section>
   )
 }
 
